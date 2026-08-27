@@ -19,8 +19,6 @@ engine = create_engine(DATABASE_URL)
 def main():
     setup_logging()
 
-    
-
     models.Base.metadata.create_all(engine)
 
     SessionMaker = sessionmaker(bind=engine)
