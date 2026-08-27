@@ -2,6 +2,7 @@ import models
 import asyncio
 import threading
 import bot_commands
+import caban_on_awake
 import environment_manager
 
 from datetime import *
@@ -36,6 +37,8 @@ def main():
         daemon=True
     )
     thread.start()
+
+    caban_on_awake.add_cabans_from_file(SessionMaker, env_manager.get_variable("CABANS_PATH"))
 
     telegram_bot.add_command_handler(["add_user"], bot_commands.add_user)
     telegram_bot.add_command_handler(["add_caban"], bot_commands.add_caban)
